@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/code/code_practice/reset.css" />
+<link rel="stylesheet" href="/code/code_practice/style.css" />
+<body>
+  <header class="header" id="header">
+    <div class="header_wrap __inner">
+      <p class="HTML_memo">
+        今後、HTML&CSSの練習はサブブランチのcode_editにpushしていく。
+      </p>
+      <h1 class="main_ttl">HTML＆CSS練習</h1>
+      <p class="sub_heading">HTML&CSSの練習とTips</p>
+    </div>
+  </header>
+  <section class="memo" id="memo">
+    <div class="memo_wrap __inner">
+      <h2 class="section_ttl">MEMO</h2>
+      <div class="memo_block _memo1">
+        <h3 class="memo_ttl _memo1">__innerについて</h3>
+        <p class="memo_content _memo1">
+          各セクションの直下の子要素(主にdiv)のclass属性に追加する。
+          <br />ただしtopやfvには付与しないことが多い。
+          <br />これを各セクションに付与することで、全てのセクションの左右中央寄せや、
+          <br />上下のセクション間のpadding設定、widthなどを一括管理できる。
+          <br />個別にwidthなどの数値を設定したい場合には、
+          <br />"__inner"と並列に付与している兄弟要素divに個別でwidth指定してあげれば良い。
+        </p>
+      </div>
+      <div class="memo_block _memo2">
+        <h3 class="memo_ttl _memo2">空白の開け方</h3>
+        <p class="memo_content _memo2">
+          キーボードでスペースをあけようとしてもではうまく空白をあけられない。
+          <br />空白をあけるにはHTMLに決まったコマンドを入力する。
+        </p>
+        <ol class="make-space">
+          <li>【&amp;nbsp;】：半角スペースと同じサイズの空白</li>
+          <li>【&amp;thinsp;】：&amp;nbsp;の空白より小さい空白</li>
+          <li>【&amp;ensp;】：半角スペースより間隔がやや広い空白</li>
+          <li>【&amp;emsp;】：全角スペースとほぼ同じサイズの空白</li>
+        </ol>
+        <p>
+          おまけ<br />
+          【&amp;nbsp;】のような文字をHTMLで文字列として表示させるには<br />
+          【&】と【nbsp;】の間に【amp;】を入力すると本来空白となる【&amp;nbsp;】を<br />
+          文字列として表示できる。
+        </p>
+      </div>
+      <div class="memo_block _memo3">
+        <h3 class="memo_ttl _memo3">セレクタの指定方法について</h3>
+        <!-- 上no-wrapで折り返さないようにする。 -->
+        <ol>
+          <p class="memo_content _memo3">
+            いつも忘れてしまうセレクタの指定方法についてまとめる
+          </p>
+          <li>
+            【.A
+            B】：クラスA要素より深い階層にある子要素や孫要素のクラスBに効く。
+          </li>
+          <li>
+            【.A.B】：クラス名Aとクラス名Bの２つのクラスを持つ要素だけに効く。
+          </li>
+          <li>【.A,.B】:クラス名Aの要素とクラス名Bの要素に効く。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="practice" id="practice">
+    <div class="practice_wrap __inner">
+      <h2 class="section_ttl">Practice</h2>
+      <ul>
+        <li class="practice_1">
+          <span class="practice_css_ttl">text-align</span>
+          <div class="text-align_content _content_txt">
+            inline要素やinline-block要素を揃える。
+            <br />[方法]揃えしたい要素の親要素に指定。[inline要素]文字、img、span
+            <br />[指定方法]left,center,right,justify(両端揃え)
+            <div class="text-align _note">
+              <div class="text-align_note_parents">
+                <p>親ブロック</p>
+                <div class="text-align_note_child">
+                  子ブロック(inline要素に指定し中央寄せ)
+                  <p>
+                    これはpタグ。pタグにはright指定。
+                    <br />するとpタグ内の文字列が右端に整列。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="practice_2">
+          <span class="practice_css_ttl">縦方向の中央揃え</span>
+          <div class="vertical-center_content _content_txt">
+            <p>
+              ・要素のheightと中身のtxtのline-heightを一緒にする。(一行txtのみ)
+            </p>
+            <p>・txtの上下に同じ余白を設定(複数行txtもok)</p>
+            <p>
+              ・vertical-alignを使用する。<br />
+              &emsp;[方法]上下中央揃えしたいinline要素に指定。&emsp;親要素ではなく揃える要素に！
+              <br />
+              &emsp;[指定方法]top,text-top,middle,baseline,bottom,text-bottom。<br />
+            </p>
+            <div class="vertical-center _note">
+              <div class="vertical-center_note_parents">
+                <p>親要素</p>
+                <div class="vertical-center_note_child _v-c_n_child1">子①</div>
+                <div class="vertical-center_note_child _v-c_n_child2">子②</div>
+                <div class="vertical-center_note_child _v-c_n_child3">子③</div>
+                <p>各子要素のボックスが上下中央に揃えられた。</p>
+              </div>
+            </div>
+            <p>
+              ・positionプロパティを使用する
+              <br />&emsp;[方法]親要素に「position: relative;」
+              <br />&emsp;&emsp;&emsp;&nbsp;&thinsp;&thinsp;中央揃えしたい要素に、
+              <br />&emsp;&emsp;&emsp;&nbsp;&thinsp;&thinsp;「position:
+              absolute;」 <br />&emsp;&emsp;&emsp;&nbsp;&thinsp;&thinsp;「top:
+              50%;」 <br />&emsp;&emsp;&emsp;&nbsp;&thinsp;&thinsp;「left:
+              50%;」 <br />&emsp;&emsp;&emsp;&nbsp;&thinsp;&thinsp;「transform:
+              translate(-50%, -50%);」
+            </p>
+            <div class="position-property _note">
+              <div class="position-property_note_parents">
+                <p>親要素</p>
+                <div class="position-property_note_child">子ブロック要素</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="practice_3">
+          <span class="practice_css_ttl">Flex-Box</span>
+          <div class="Flex-box_content _content_txt">
+            親要素内のboxを整列させる。
+            <br />[方法]揃えしたい要素の親要素にdisplay:flexを指定。
+            <br />※1.Flex-Boxを利用する際は整列させたい要素の親要素の高さ幅を指定する必要がある。
+            <br />※2.Flex-Boxやposition
+            absoluteは横幅の指定がないとｷﾞｭｯとなるのでwidth指定する必要がある。
+          </div>
+          <div class="Flex-box_content _content_body">
+            <div class="Flex-box_content _F-direction">
+              <br />①並ぶ向きの指定【flex-direction:】
+              <br />値：row(初期値),row-reverse,column,column-reverse
+              <div class="F-direction _F-note__wrap">
+                <div class="F-direction-1 _note _Flex-parents">
+                  <p class="F-direction_row">親ブロック row</p>
+                  <div class="F-direction child_con">
+                    <div class="F-direction _F _note_child _1">子ブロック1</div>
+                    <div class="F-direction _F _note_child _2">子ブロック2</div>
+                    <div class="F-direction _F _note_child _3">子ブロック3</div>
+                    <div class="F-direction _F _note_child _4">子ブロック4</div>
+                  </div>
+                </div>
+                <div class="F-direction-2 _note _Flex-parents">
+                  <p class="F-direction_colum">親ブロック colum</p>
+                  <div class="F-direction child_con">
+                    <div class="F-direction _F _note_child _1">子ブロック1</div>
+                    <div class="F-direction _F _note_child _2">子ブロック2</div>
+                    <div class="F-direction _F _note_child _3">子ブロック3</div>
+                    <div class="F-direction _F _note_child _4">子ブロック4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="Flex-box_content _F-wrap">
+              <br />②折り返しの指定指定【flex-wrap:】
+              <br />値：wrap(初期値),no-wrap,wrap-reverse
+              <br />※1.【no-wrap】の場合はwidthなどで横サイズ指定していても無効になるので注意。
+              <br />&emsp;&nbsp;&nbsp;&nbsp;子要素横幅指定したい時は【wrap】にする。
+              <div class="F-wrap _F-note__wrap">
+                <div class="F-wrap-1 _note _Flex-parents">
+                  <p class="F-wrap_row">親ブロック wrap</p>
+                  <div class="F-wrap_child_con">
+                    <div class="F-wrap _F _note_child _1">1</div>
+                    <div class="F-wrap _F _note_child _2">2</div>
+                    <div class="F-wrap _F _note_child _3">3</div>
+                    <div class="F-wrap _F _note_child _4">4</div>
+                    <div class="F-wrap _F _note_child _5">5</div>
+                    <div class="F-wrap _F _note_child _6">6</div>
+                    <div class="F-wrap _F _note_child _7">7</div>
+                    <div class="F-wrap _F _note_child _8">8</div>
+                    <div class="F-wrap _F _note_child _8">9</div>
+                    <div class="F-wrap _F _note_child _8">10</div>
+                  </div>
+                </div>
+                <div class="F-wrap-2 _note _Flex-parents">
+                  <p class="F-wrap_colum">親ブロック no-wrap</p>
+                  <div class="F-wrap_child_con">
+                    <div class="F-wrap _F _note_child _1">1</div>
+                    <div class="F-wrap _F _note_child _2">2</div>
+                    <div class="F-wrap _F _note_child _3">3</div>
+                    <div class="F-wrap _F _note_child _4">4</div>
+                    <div class="F-wrap _F _note_child _5">5</div>
+                    <div class="F-wrap _F _note_child _6">6</div>
+                    <div class="F-wrap _F _note_child _7">7</div>
+                    <div class="F-wrap _F _note_child _8">8</div>
+                    <div class="F-wrap _F _note_child _8">9</div>
+                    <div class="F-wrap _F _note_child _8">10</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="Flex-box_content _F-flow">
+              <br />③directionとwrapの同時指定【flex-flow:】 <br />値：row
+              wrap(初期値),colum wrap,row no-wrap,colum wrap-reverse等
+              <div class="F-flow _F-note__wrap">
+                <div class="F-flow-1 _note _Flex-parents">
+                  <p class="F-flow_row">親 colum wrap</p>
+                  <div class="F-flow_child_con">
+                    <div class="F-flow _F _note_child _1">1</div>
+                    <div class="F-flow _F _note_child _1">2</div>
+                    <div class="F-flow _F _note_child _1">3</div>
+                    <div class="F-flow _F _note_child _1">4</div>
+                    <div class="F-flow _F _note_child _1">5</div>
+                    <div class="F-flow _F _note_child _1">6</div>
+                    <div class="F-flow _F _note_child _1">7</div>
+                    <div class="F-flow _F _note_child _1">8</div>
+                    <div class="F-flow _F _note_child _1">9</div>
+                    <div class="F-flow _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-flow-2 _note _Flex-parents">
+                  <p class="F-flow_colum">親 row wrap-reverse</p>
+                  <div class="F-flow_child_con">
+                    <div class="F-flow _F _note_child _1">1</div>
+                    <div class="F-flow _F _note_child _1">2</div>
+                    <div class="F-flow _F _note_child _1">3</div>
+                    <div class="F-flow _F _note_child _1">4</div>
+                    <div class="F-flow _F _note_child _1">5</div>
+                    <div class="F-flow _F _note_child _1">6</div>
+                    <div class="F-flow _F _note_child _1">7</div>
+                    <div class="F-flow _F _note_child _1">8</div>
+                    <div class="F-flow _F _note_child _1">9</div>
+                    <div class="F-flow _F _note_child _1">10</div>
+                  </div>
+                </div>
+              </div>
+              <div class="F-flow_memo">
+                ※ colum wrapで折り返す時は折り返す高さ「height」指定が必要。
+                <br />※ row wrapで折り返すときも折り返す幅「width」が必要。
+              </div>
+            </div>
+            <div class="Flex-box_content_F-JC">
+              <br />④水平方向の並べ方【justify-content:】
+              <br />値：flex-start(初期値),-end,center,space-between,space-around等
+              <div class="F-JC _F-note__wrap __Flex_Alignment">
+                <div class="F-JC-1 _note _Flex-parents">
+                  <p class="F-JC_FE">親 flex-end</p>
+                  <div class="F-JC_child_con">
+                    <div class="F-JC _F _note_child _1">1</div>
+                    <div class="F-JC _F _note_child _1">2</div>
+                    <div class="F-JC _F _note_child _1">3</div>
+                    <div class="F-JC _F _note_child _1">4</div>
+                    <div class="F-JC _F _note_child _1">5</div>
+                    <div class="F-JC _F _note_child _1">6</div>
+                    <div class="F-JC _F _note_child _1">7</div>
+                    <div class="F-JC _F _note_child _1">8</div>
+                    <div class="F-JC _F _note_child _1">9</div>
+                    <div class="F-JC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-JC-2 _note _Flex-parents">
+                  <p class="F-JC_center">親 center</p>
+                  <div class="F-JC_child_con">
+                    <div class="F-JC _F _note_child _1">1</div>
+                    <div class="F-JC _F _note_child _1">2</div>
+                    <div class="F-JC _F _note_child _1">3</div>
+                    <div class="F-JC _F _note_child _1">4</div>
+                    <div class="F-JC _F _note_child _1">5</div>
+                    <div class="F-JC _F _note_child _1">6</div>
+                    <div class="F-JC _F _note_child _1">7</div>
+                    <div class="F-JC _F _note_child _1">8</div>
+                    <div class="F-JC _F _note_child _1">9</div>
+                    <div class="F-JC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-JC-3 _note _Flex-parents">
+                  <p class="F-JC_SB">親 space-between</p>
+                  <div class="F-JC_child_con">
+                    <div class="F-JC _F _note_child _1">1</div>
+                    <div class="F-JC _F _note_child _1">2</div>
+                    <div class="F-JC _F _note_child _1">3</div>
+                    <div class="F-JC _F _note_child _1">4</div>
+                    <div class="F-JC _F _note_child _1">5</div>
+                    <div class="F-JC _F _note_child _1">6</div>
+                    <div class="F-JC _F _note_child _1">7</div>
+                    <div class="F-JC _F _note_child _1">8</div>
+                    <div class="F-JC _F _note_child _1">9</div>
+                    <div class="F-JC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-JC-4 _note _Flex-parents">
+                  <p class="F-JC_SA">親 space-around</p>
+                  <div class="F-JC_child_con">
+                    <div class="F-JC _F _note_child _1">1</div>
+                    <div class="F-JC _F _note_child _1">2</div>
+                    <div class="F-JC _F _note_child _1">3</div>
+                    <div class="F-JC _F _note_child _1">4</div>
+                    <div class="F-JC _F _note_child _1">5</div>
+                    <div class="F-JC _F _note_child _1">6</div>
+                    <div class="F-JC _F _note_child _1">7</div>
+                    <div class="F-JC _F _note_child _1">8</div>
+                    <div class="F-JC _F _note_child _1">9</div>
+                    <div class="F-JC _F _note_child _1">10</div>
+                  </div>
+                </div>
+              </div>
+              <div class="F-JC_memo">
+                子要素の並び方はflex-flow: row wrap;を指定。 ※ space-between ：
+                最初と最後の子要素を端に配置し、それ以外を均等配置。
+                <br />※ space-around :
+                すべての子要素の左右に同じ量の余白を作成して配置。
+              </div>
+            </div>
+            <div class="Flex-box_content_F-AC">
+              <br />⑤垂直方向の並べ方(複数行)【align-content:】
+              <br />複数行の配置ができる設定。複数行あってもまとめてルール決められる。
+              <br />値：stretch(初期値),flex-end,center,space-between,space-around等
+              <br />「display：flex；」使用すると子要素に高さ「height」していない場合に
+              <br />その行の高さ目いっぱいまで広げられる初期値「stretch」になっているので注意。
+              <div class="F-AC _F-note__wrap __Flex_Alignment">
+                <div class="F-AC-1 _note _Flex-parents">
+                  <p class="F-AC_s">親 stretch</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AC-2 _note _Flex-parents">
+                  <p class="F-AC_FE">親 flex-start</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AC-3 _note _Flex-parents">
+                  <p class="F-AC_FE">親 flex-end</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AC-4 _note _Flex-parents">
+                  <p class="F-AC_FE">親 center</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AC-5 _note _Flex-parents">
+                  <p class="F-AC_FE">親 space-between</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AC-6 _note _Flex-parents">
+                  <p class="F-AC_FE">親 space-around</p>
+                  <div class="F-AC_child_con">
+                    <div class="F-AC _F _note_child _1">1</div>
+                    <div class="F-AC _F _note_child _1">2</div>
+                    <div class="F-AC _F _note_child _1">3</div>
+                    <div class="F-AC _F _note_child _1">4</div>
+                    <div class="F-AC _F _note_child _1">5</div>
+                    <div class="F-AC _F _note_child _1">6</div>
+                    <div class="F-AC _F _note_child _1">7</div>
+                    <div class="F-AC _F _note_child _1">8</div>
+                    <div class="F-AC _F _note_child _1">9</div>
+                    <div class="F-AC _F _note_child _1">10</div>
+                  </div>
+                </div>
+              </div>
+              <div class="F-AC_memo">
+                ※ space-between ：
+                最初と最後の子要素を端に配置し、それ以外を均等配置。
+                <br />※ space-around :
+                すべての子要素の左右に同じ量の余白を作成して配置。
+              </div>
+            </div>
+            <div class="Flex-box_content_F-AI">
+              <br />⑤垂直方向の並べ方(複数行)【align-items:】
+              <br />複数行の配置ができる設定。複数行あってもまとめてルール決められる。
+              <br />値：stretch(初期値),flex-end,center,space-between,space-around等
+              <br />「display：flex；」使用すると子要素に高さ「height」していない場合に
+              <br />その行の高さ目いっぱいまで広げられる初期値「stretch」になっているので注意。
+              <div class="F-AI _F-note__wrap __Flex_Alignment">
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+                <div class="F-AI-1 _note _Flex-parents">
+                  <p class="F-AI_s">親 stretch</p>
+                  <div class="F-AI_child_con">
+                    <div class="F-AI _F _note_child _1">1</div>
+                    <div class="F-AI _F _note_child _1">2</div>
+                    <div class="F-AI _F _note_child _1">3</div>
+                    <div class="F-AI _F _note_child _1">4</div>
+                    <div class="F-AI _F _note_child _1">5</div>
+                    <div class="F-AI _F _note_child _1">6</div>
+                    <div class="F-AI _F _note_child _1">7</div>
+                    <div class="F-AI _F _note_child _1">8</div>
+                    <div class="F-AI _F _note_child _1">9</div>
+                    <div class="F-AI _F _note_child _1">10</div>
+                  </div>
+                </div>
+              </div>
+              <div class="F-AC_memo">
+                ※ space-between ：
+                最初と最後の子要素を端に配置し、それ以外を均等配置。
+                <br />※ space-around :
+                すべての子要素の左右に同じ量の余白を作成して配置。
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
